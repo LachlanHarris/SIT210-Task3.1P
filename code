@@ -1,0 +1,16 @@
+void setup() {
+    pinMode(A1,INPUT);
+}
+
+void loop() {
+//The analog read is multiplied by 0.3 to change its readings from a range of 0-3000 to 0 - 1000 as this is what i was used to when using this sensor with my arduino
+//this step could be skipped and is purely for my own personal viewing 
+//it allows me to better understand the data as
+//0-300 is dry soil
+//300-600 is moist soil
+//600-999 is wet soil
+
+int soilmoisture = analogRead(A1)*(0.3);
+Particle.publish("soilmoisture", String(soilmoisture), PRIVATE);
+delay(30000);
+}
